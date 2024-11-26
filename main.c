@@ -95,8 +95,26 @@ void modifyTask() {
     printf("Task updated successfully!\n");
 }
 
+void deleteTask() {
+    int index;
+    viewTasks();
+    if (taskCount == 0) return;
 
+    printf("Enter the task number to delete: ");
+    scanf("%d", &index);
 
+    if (index < 1 || index > taskCount) {
+        printf("Invalid task number.\n");
+        return;
+    }
+
+    index--; // nfs concept dyal modify kfr9 gna anms7o wsf
+    for (int i = index; i < taskCount - 1; i++) {
+        tasks[i] = tasks[i + 1];
+    }
+    taskCount--; // hna an9as  mn l7sab dyal tasks 7it rah ms7 w7da
+    printf("Task deleted successfully!\n");
+}
 int main() {
     
  int choice;
@@ -114,6 +132,9 @@ int main() {
                 break;
                  case 3:
                 modifyTask();
+                break;
+                 case 4:
+                deleteTask();
                 break;
                 }
     } while (choice != 8);
