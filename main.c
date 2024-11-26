@@ -52,6 +52,23 @@ void addTask() { // function lwla matreturni walo mais tzid f table li 3ndi dyal
     printf("Task added successfully!\n"); // kan9oloha l user bach yfra7
 }
 
+void viewTasks() {
+    if (taskCount == 0) {
+        printf("No tasks available.\n"); // bach maykonch error y9ad ybghi ychof whowa ma3ndo walo kandiro test sghir drif
+        return;
+    }
+
+    printf("\nList of Tasks:\n");
+    for (int i = 0; i < taskCount; i++) { // ila kan 3ndo kandiro loop for bach twrina ga3 dakchi li 3ndo w7da bw7da
+        printf("\nTask %d:\n", i + 1);
+        printf("Title: %s\n", tasks[i].title);
+        printf("Description: %s\n", tasks[i].description);
+        printf("Due Date: %s\n", tasks[i].dueDate);
+        printf("Priority: %s\n", tasks[i].priority);
+        printf("Status: %s\n", tasks[i].status);
+    }
+}
+
 
 int main() {
     
@@ -64,6 +81,9 @@ int main() {
         switch (choice) {
             case 1:
                 addTask();
+                break;
+                 case 2:
+                viewTasks();
                 break;
                 }
     } while (choice != 8);
