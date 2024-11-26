@@ -68,6 +68,33 @@ void viewTasks() {
         printf("Status: %s\n", tasks[i].status);
     }
 }
+void modifyTask() {
+    int index;
+    viewTasks();
+    if (taskCount == 0) return;
+
+    printf("Enter the task number to modify: ");
+    scanf("%d", &index); // dak & raha kat3tina adress fl memoire li haza index
+
+    if (index < 1 || index > taskCount) {
+        printf("Invalid task number.\n");
+        return;
+    }
+
+    index--; // c katbda l7sab mn 0 alors l user mklkh maghay3rfch hadchi howa aybda l7sab mn 1 donc 7na chno ma dkhal kan9so mno 1 bach njiboha 3bar
+    printf("Modifying Task %d:\n", index + 1);
+    printf("Enter new description: ");
+    scanf(" %[^\n]", tasks[index].description);
+    printf("Enter new due date (YYYY-MM-DD): ");
+    scanf(" %s", tasks[index].dueDate);
+    printf("Enter new priority (High/Low): ");
+    scanf(" %s", tasks[index].priority);
+    printf("Enter new status (Complete/Incomplete): ");
+    scanf(" %s", tasks[index].status);
+
+    printf("Task updated successfully!\n");
+}
+
 
 
 int main() {
@@ -84,6 +111,9 @@ int main() {
                 break;
                  case 2:
                 viewTasks();
+                break;
+                 case 3:
+                modifyTask();
                 break;
                 }
     } while (choice != 8);
