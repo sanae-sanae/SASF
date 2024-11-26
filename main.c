@@ -115,6 +115,32 @@ void deleteTask() {
     taskCount--; // hna an9as  mn l7sab dyal tasks 7it rah ms7 w7da
     printf("Task deleted successfully!\n");
 }
+void filterTasksByStatus() {  // hadi copy coller lokhra mbdal ghi argument wsf
+    char status[15];
+    printf("Enter status to filter (Complete/Incomplete): ");
+    scanf(" %s", status);
+
+    printf("\nFiltered Tasks by Status (%s):\n", status);
+    int found = 0;
+    for (int i = 0; i < taskCount; i++) {
+        if (strcmp(tasks[i].status, status) == 0) { //The strcmp() compares two strings character by character
+        //If the strings are equal, the function returns 0.
+
+
+            printf("\nTask %d:\n", i + 1);
+            printf("Title: %s\n", tasks[i].title);
+            printf("Description: %s\n", tasks[i].description);
+            printf("Due Date: %s\n", tasks[i].dueDate);
+            printf("Priority: %s\n", tasks[i].priority);
+            printf("Status: %s\n", tasks[i].status);
+            found = 1;
+        }
+    }
+    if (!found) {
+        printf("No tasks found with the given status.\n");
+    }
+}
+
 int main() {
     
  int choice;
@@ -135,6 +161,9 @@ int main() {
                 break;
                  case 4:
                 deleteTask();
+                break;
+                 case 5:
+                filterTasksByPriority();
                 break;
                 }
     } while (choice != 8);
